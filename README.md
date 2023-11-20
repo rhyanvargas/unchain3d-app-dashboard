@@ -30,6 +30,9 @@
 - Styling with [Tailwind CSS](https://tailwindcss.com)
 - Optional deployment with [Supabase Vercel Integration and Vercel deploy](#deploy-your-own)
   - Environment variables automatically assigned to Vercel project
+- Font Optimization [w/NextJs](https://nextjs.org/docs/app/building-your-application/optimizing/fonts#with-tailwind-css)
+- Gradient Text - use `.bg-gradient` class on text elements
+  - Edit gradient css variable - `./styles/base.css`
 
 ## Demo
 

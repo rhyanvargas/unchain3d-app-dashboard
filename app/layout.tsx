@@ -1,28 +1,42 @@
-import { GeistSans } from 'geist/font/sans'
-import './globals.css'
+import "./globals.css";
+import { Space_Grotesk, Archivo } from "next/font/google";
+
+// If loading a variable font, you don't need to specify the font weight
+const heading = Space_Grotesk({
+	subsets: ["latin"],
+	display: "swap",
+	variable: "--font-heading",
+});
+const body = Archivo({
+	subsets: ["latin"],
+	display: "swap",
+	variable: "--font-body",
+	style: ["normal"],
+});
 
 const defaultUrl = process.env.VERCEL_URL
-  ? `https://${process.env.VERCEL_URL}`
-  : 'http://localhost:3000'
+	? `https://${process.env.VERCEL_URL}`
+	: "http://localhost:3000";
 
 export const metadata = {
-  metadataBase: new URL(defaultUrl),
-  title: 'Next.js and Supabase Starter Kit',
-  description: 'The fastest way to build apps with Next.js and Supabase',
-}
+	metadataBase: new URL(defaultUrl),
+	title: "Dashboard | UNCHAIN3D",
+	description:
+		"The most frictionless and fun way to bet on other online games.",
+};
 
 export default function RootLayout({
-  children,
+	children,
 }: {
-  children: React.ReactNode
+	children: React.ReactNode;
 }) {
-  return (
-    <html lang="en" className={GeistSans.className}>
-      <body className="bg-background text-foreground">
-        <main className="min-h-screen flex flex-col items-center">
-          {children}
-        </main>
-      </body>
-    </html>
-  )
+	return (
+		<html lang="en" className={`${body.variable} ${heading.variable}`}>
+			<body className="bg-background text-foreground">
+				<main className="min-h-screen flex flex-col items-center">
+					{children}
+				</main>
+			</body>
+		</html>
+	);
 }
