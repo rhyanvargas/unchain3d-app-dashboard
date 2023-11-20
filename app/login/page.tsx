@@ -120,7 +120,7 @@ export default function Login({
 				</div>
 			</div>
 			{/* col right */}
-			<div className="col-span-5 flex justify-center align-middle items-center h-screen bg-[url('/ph.png')] bg-cover bg-center">
+			<div className="col-span-5 flex justify-center align-middle items-center h-screen bg-[url('./ph.png')] bg-cover bg-center">
 				<div className="p-8">
 					<h1 className="text-2xl font-semibold mb-4">Heading</h1>
 					<ul className="list-disc pl-6">
