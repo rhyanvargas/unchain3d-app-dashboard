@@ -1,8 +1,6 @@
 import DeployButton from "../components/DeployButton";
 import AuthButton from "../components/AuthButton";
 import { createClient } from "@/utils/supabase/server";
-import ConnectSupabaseSteps from "@/components/ConnectSupabaseSteps";
-import SignUpUserSteps from "@/components/SignUpUserSteps";
 import Header from "@/components/Header";
 import { cookies } from "next/headers";
 import Wallet from "@/components/Wallet";
@@ -29,7 +27,7 @@ export default async function Index() {
 				<main className="flex-1 flex flex-col gap-6">
 					<h2 className="font-bold text-4xl mb-4">Next steps</h2>
 					{user?.email}
-					<Wallet email={user?.email} />
+					{user?.email && <Wallet email={user.email} />}
 				</main>
 			</div>
 

@@ -2,7 +2,11 @@
 
 import React, { useEffect, useState } from "react";
 
-const Wallet = ({ email }) => {
+interface WalletProps {
+	email: string;
+}
+
+const Wallet = ({ email }: WalletProps) => {
 	const [data, setData] = useState(null);
 	const [ethAddress, setEthAddress] = useState(null);
 	const [loading, setLoading] = useState(true);
@@ -10,7 +14,6 @@ const Wallet = ({ email }) => {
 
 	useEffect(() => {
 		const fetchData = async () => {
-			console.log("fetching data");
 			try {
 				const response = await fetch(`/api/wallet?email=${email}`);
 
@@ -20,7 +23,7 @@ const Wallet = ({ email }) => {
 				const result = await response.json();
 				setData(result);
 				setEthAddress(result.wallets.ethAddress);
-			} catch (err) {
+			} catch (err: any) {
 				setError(err.message);
 			} finally {
 				setLoading(false);

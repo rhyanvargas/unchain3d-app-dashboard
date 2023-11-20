@@ -1,6 +1,3 @@
-import { createServerClient, type CookieOptions } from "@supabase/ssr";
-import { cookies } from "next/headers";
-
 export async function GET(request: Request) {
 	try {
 		const email = new URL(request.url).searchParams.get("email");
@@ -15,17 +12,15 @@ export async function GET(request: Request) {
 			},
 			body: JSON.stringify({ user: { email: email } }),
 		});
+
 		if (!response.ok) {
 			throw new Error(`Error fetching wallet: ${response.statusText}`);
 		}
 		const data = await response.json();
 
-		// Log the wallet address
-		console.log("Wallet Address:", data);
-
 		// Return the wallet address to the client
 		return new Response(JSON.stringify({ wallets: data.wallet }));
-	} catch (error) {
+	} catch (error: any) {
 		console.error("Error:", error.message);
 		return new Response(JSON.stringify({ error: error.message }), {
 			status: 500,
