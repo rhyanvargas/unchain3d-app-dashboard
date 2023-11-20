@@ -72,8 +72,41 @@
 	* {
 		@apply border-border;
 	}
+	html {
+		@apply font-body;
+	}
 	body {
 		@apply bg-background text-foreground;
+	}
+	h1,
+	h2,
+	h3 {
+		@apply font-heading font-light tracking-tight scroll-m-20 transition-colors;
+	}
+	h2,
+	h3 {
+		@apply font-normal;
+	}
+	h1 {
+		@apply text-4xl lg:text-5xl !bg-clip-text text-transparent !bg-cover !bg-center transition-all;
+	}
+	h2 {
+		@apply mt-10  border-b pb-2 text-3xl first:mt-0;
+	}
+	h3 {
+		@apply mt-8  text-2xl;
+	}
+	p {
+		@apply font-thin leading-7 [&:not(:first-child)]:mt-6;
+	}
+	a {
+		@apply font-medium text-primary underline underline-offset-4;
+	}
+	ul {
+		@apply my-6 ml-6 list-disc [&>li]:mt-2;
+	}
+	blockqoute {
+		@apply mt-6 border-l-2 pl-6 italic;
 	}
 
 	@media (prefers-color-scheme: dark) {
