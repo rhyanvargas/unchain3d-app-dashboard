@@ -4,6 +4,7 @@ import { cookies } from "next/headers";
 import { Button } from "@/components/ui/button";
 import Header from "@/components/Header";
 import Wallet from "@/components/Wallet";
+import { createClient } from "@/utils/supabase/server";
 
 export default async function Index() {
 	const cookieStore = cookies();
