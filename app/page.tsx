@@ -1,26 +1,19 @@
 import DeployButton from "../components/DeployButton";
 import AuthButton from "../components/AuthButton";
 import { Button } from "@/components/ui/button";
-import Wallet from "@/components/Wallet";
-import { getUser } from "./actions";
+// import Wallet from "@/components/Wallet";
+// import { getUser } from "./actions";
 // import { cookies } from "next/headers";
 // import { createClient } from "@/utils/supabase/server";
 // import { ReadonlyRequestCookies } from "next/dist/server/web/spec-extension/adapters/request-cookies";
-//
-// async function getCookieData(): Promise<ReadonlyRequestCookies> {
-// 	const cookieData = cookies();
-// 	return new Promise((resolve) =>
-// 		setTimeout(() => {
-// 			resolve(cookieData);
-// 		}, 1000)
-// 	);
-// }
 
 export default async function Index() {
-	const { user, message } = await getUser();
-	if (message || !user) {
-		console.log("GetUser Message: ", message);
-	}
+	// const { user, message } = await getUser();
+	// if (message || !user) {
+	// 	console.log("GetUser Message: ", message);
+	// }
+
+	const user = { email: "rhyan@readyweb3.io" };
 
 	return (
 		<div className="flex-1 w-full flex flex-col gap-20 items-center">
@@ -45,7 +38,7 @@ export default async function Index() {
 						</p>
 						<Button variant="default">Get Started</Button>
 						{user?.email}
-						{user?.email && <Wallet email={user.email} />}
+						{/* {user?.email && <Wallet email={user.email} />} */}
 					</div>
 				</main>
 			</div>
