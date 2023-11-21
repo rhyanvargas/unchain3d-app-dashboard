@@ -2,7 +2,6 @@ import DeployButton from "../components/DeployButton";
 import AuthButton from "../components/AuthButton";
 import { cookies } from "next/headers";
 import { Button } from "@/components/ui/button";
-import Header from "@/components/Header";
 import Wallet from "@/components/Wallet";
 import { createClient } from "@/utils/supabase/server";
 
@@ -19,7 +18,7 @@ export default async function Index() {
 			<nav className="w-full flex justify-center border-b border-b-foreground/10 h-16">
 				<div className="w-full max-w-4xl flex justify-between items-center p-3 text-sm">
 					<DeployButton />
-					{isSupabaseConnected && <AuthButton />}
+					<AuthButton />
 				</div>
 			</nav>
 
@@ -36,8 +35,8 @@ export default async function Index() {
 							Class Security and NO GAS FEES!
 						</p>
 						<Button variant="default">Get Started</Button>
-            {user?.email}
-					{user?.email && <Wallet email={user.email} />}
+						{user?.email}
+						{user?.email && <Wallet email={user.email} />}
 					</div>
 				</main>
 			</div>
