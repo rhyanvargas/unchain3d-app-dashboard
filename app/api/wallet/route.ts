@@ -1,6 +1,12 @@
+import { createClient } from "@/utils/supabase/server";
+import { NextResponse } from "next/server";
+import { cookies } from "next/headers";
+
 export async function GET(request: Request) {
 	try {
-		const email = new URL(request.url).searchParams.get("email");
+		const cookieStore = cookies();
+		const supabase = createClient(cookieStore);
+		const user = await supabase.auth.getUser();
 
 		// Call the external API
 		const response = await fetch(`https://api.metakeep.xyz/v3/getWallet`, {
@@ -10,7 +16,7 @@ export async function GET(request: Request) {
 				"Content-Type": "application/json",
 				"x-api-key": process.env.METAKEEP_API_KEY!,
 			},
-			body: JSON.stringify({ user: { email: email } }),
+			body: JSON.stringify({ user: { email: user.data.user?.email } }),
 		});
 
 		if (!response.ok) {

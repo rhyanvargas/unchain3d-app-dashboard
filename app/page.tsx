@@ -27,7 +27,7 @@ export default async function Index() {
 				<main className="flex-1 flex flex-col gap-6">
 					<h2 className="font-bold text-4xl mb-4">Next steps</h2>
 					{user?.email}
-					{user?.email && <Wallet email={user.email} />}
+					{user?.email && <Wallet />}
 				</main>
 			</div>
 
