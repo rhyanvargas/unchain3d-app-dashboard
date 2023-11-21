@@ -1,19 +1,16 @@
 import DeployButton from "../components/DeployButton";
 import AuthButton from "../components/AuthButton";
 import { Button } from "@/components/ui/button";
-// import Wallet from "@/components/Wallet";
-// import { getUser } from "./actions";
-// import { cookies } from "next/headers";
-// import { createClient } from "@/utils/supabase/server";
-// import { ReadonlyRequestCookies } from "next/dist/server/web/spec-extension/adapters/request-cookies";
+import Wallet from "@/components/Wallet";
+import { createClient } from "@/utils/supabase/server";
 
 export default async function Index() {
-	// const { user, message } = await getUser();
-	// if (message || !user) {
-	// 	console.log("GetUser Message: ", message);
-	// }
+	const cookieStore = cookies();
+	const supabase = createClient(cookieStore);
 
-	const user = { email: "rhyan@readyweb3.io" };
+	const {
+		data: { user },
+	} = await supabase.auth.getUser();
 
 	return (
 		<div className="flex-1 w-full flex flex-col gap-20 items-center">
