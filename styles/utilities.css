@@ -1,0 +1,7 @@
+@tailwind utilities;
+
+@layer utilities {
+	.bg-gradient {
+		background: var(--gradient);
+	}
+}

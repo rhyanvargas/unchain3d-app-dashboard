@@ -1,9 +1,9 @@
 import DeployButton from "../components/DeployButton";
 import AuthButton from "../components/AuthButton";
-import { createClient } from "@/utils/supabase/server";
-import Header from "@/components/Header";
-import { cookies } from "next/headers";
+import { Button } from "@/components/ui/button";
 import Wallet from "@/components/Wallet";
+import { createClient } from "@/utils/supabase/server";
+import { cookies } from "next/headers";
 
 export default async function Index() {
 	const cookieStore = cookies();
@@ -22,12 +22,22 @@ export default async function Index() {
 				</div>
 			</nav>
 
-			<div className="animate-in flex-1 flex flex-col gap-20 opacity-0 max-w-4xl px-3">
-				<Header />
-				<main className="flex-1 flex flex-col gap-6">
-					<h2 className="font-bold text-4xl mb-4">Next steps</h2>
-					{user?.email}
-					{user?.email && <Wallet email={user.email} />}
+			<div className="">
+				<main className="">
+					<div>
+						<h1 className="bg-gradient">
+							UNCHAIN3D AI Powered Internet Experiences
+						</h1>
+						<p>
+							Immersive Real and 3D Experiences. Live Streaming Sports and
+							Entertainment. Peer 2 Peer Wagering. Gaming. Retail, Loyalty
+							Rewards and more. Earn and Ownership with Digital Privacy, World
+							Class Security and NO GAS FEES!
+						</p>
+						<Button variant="default">Get Started</Button>
+						{user?.email}
+						{user?.email && <Wallet />}
+					</div>
 				</main>
 			</div>
 

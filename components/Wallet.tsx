@@ -2,11 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 
-interface WalletProps {
-	email: string;
-}
-
-const Wallet = ({ email }: WalletProps) => {
+const Wallet = () => {
 	const [data, setData] = useState(null);
 	const [ethAddress, setEthAddress] = useState(null);
 	const [loading, setLoading] = useState(true);
@@ -15,7 +11,7 @@ const Wallet = ({ email }: WalletProps) => {
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				const response = await fetch(`/api/wallet?email=${email}`);
+				const response = await fetch(`/api/wallet`);
 
 				if (!response.ok) {
 					throw new Error("Network Error");
