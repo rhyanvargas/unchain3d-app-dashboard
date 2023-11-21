@@ -3,6 +3,7 @@ import AuthButton from "../components/AuthButton";
 import { Button } from "@/components/ui/button";
 import Wallet from "@/components/Wallet";
 import { createClient } from "@/utils/supabase/server";
+import { cookies } from "next/headers";
 
 export default async function Index() {
 	const cookieStore = cookies();
@@ -35,7 +36,7 @@ export default async function Index() {
 						</p>
 						<Button variant="default">Get Started</Button>
 						{user?.email}
-						{/* {user?.email && <Wallet email={user.email} />} */}
+						{user?.email && <Wallet email={user.email} />}
 					</div>
 				</main>
 			</div>
