@@ -1,0 +1,120 @@
+@tailwind base;
+
+@layer base {
+	:root {
+		/* Name: UNCHAIN3D
+       Author: VOXBOX
+    */
+
+		/* CSS: .bg-gradient { background: var(--gradient) } */
+		--gradient: linear-gradient(to left, #3de85d, #03f6f4, #6a54ff);
+
+		--background: 139 51.35% 4.64%;
+		--foreground: 139 7.9% 97.9%;
+
+		--muted: 139 39.5% 17.4%;
+		--muted-foreground: 139 7.9% 55.8%;
+
+		--popover: 139 49.2% 7.539999999999999%;
+		--popover-foreground: 139 7.9% 97.9%;
+
+		--card: 139 49.2% 7.539999999999999%;
+		--card-foreground: 139 7.9% 97.9%;
+
+		--border: 139 39.5% 17.4%;
+		--input: 139 39.5% 17.4%;
+
+		--primary: 139 79% 58%;
+		--primary-foreground: 139 7.9% 5.8%;
+
+		--secondary: 139 39.5% 17.4%;
+		--secondary-foreground: 139 7.9% 97.9%;
+
+		--accent: 139 39.5% 17.4%;
+		--accent-foreground: 139 7.9% 97.9%;
+
+		--destructive: 0 62.8% 30.6%;
+		--destructive-foreground: 139 7.9% 97.9%;
+
+		--ring: 139 79% 58%;
+	}
+
+	.dark {
+		--background: 240 10% 3.9%;
+		--foreground: 0 0% 98%;
+
+		--card: 240 10% 3.9%;
+		--card-foreground: 0 0% 98%;
+
+		--popover: 240 10% 3.9%;
+		--popover-foreground: 0 0% 98%;
+
+		--primary: 0 0% 98%;
+		--primary-foreground: 240 5.9% 10%;
+
+		--secondary: 240 3.7% 15.9%;
+		--secondary-foreground: 0 0% 98%;
+
+		--muted: 240 3.7% 15.9%;
+		--muted-foreground: 240 5% 64.9%;
+
+		--accent: 240 3.7% 15.9%;
+		--accent-foreground: 0 0% 98%;
+
+		--destructive: 0 62.8% 30.6%;
+		--destructive-foreground: 0 0% 98%;
+
+		--border: 240 3.7% 15.9%;
+		--input: 240 3.7% 15.9%;
+		--ring: 240 4.9% 83.9%;
+	}
+
+	* {
+		@apply border-border;
+	}
+	html {
+		@apply font-body;
+	}
+	body {
+		@apply bg-background text-foreground;
+	}
+	h1,
+	h2,
+	h3 {
+		@apply font-heading font-light tracking-tight scroll-m-20 transition-colors;
+	}
+	h2,
+	h3 {
+		@apply font-normal;
+	}
+	h1 {
+		@apply text-4xl lg:text-5xl !bg-clip-text text-transparent !bg-cover !bg-center transition-all;
+	}
+	h2 {
+		@apply mt-10  border-b pb-2 text-3xl first:mt-0;
+	}
+	h3 {
+		@apply mt-8  text-2xl;
+	}
+	p {
+		@apply font-thin leading-7 [&:not(:first-child)]:mt-6;
+	}
+	a {
+		@apply font-medium text-primary underline underline-offset-4;
+	}
+	ul {
+		@apply my-6 ml-6 list-disc [&>li]:mt-2;
+	}
+	blockqoute {
+		@apply mt-6 border-l-2 pl-6 italic;
+	}
+
+	@media (prefers-color-scheme: dark) {
+		:root {
+			--background: 200 50% 3%;
+			--btn-background: 200 10% 9%;
+			--btn-background-hover: 200 10% 12%;
+			--foreground: 200 20% 96%;
+		}
+	}
+}
