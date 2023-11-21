@@ -1,9 +1,10 @@
 import DeployButton from "../components/DeployButton";
 import AuthButton from "../components/AuthButton";
-import { cookies } from "next/headers";
 import { Button } from "@/components/ui/button";
 import Wallet from "@/components/Wallet";
-import { createClient } from "@/utils/supabase/server";
+import { getUser } from "./actions";
+// import { cookies } from "next/headers";
+// import { createClient } from "@/utils/supabase/server";
 // import { ReadonlyRequestCookies } from "next/dist/server/web/spec-extension/adapters/request-cookies";
 //
 // async function getCookieData(): Promise<ReadonlyRequestCookies> {
@@ -16,12 +17,10 @@ import { createClient } from "@/utils/supabase/server";
 // }
 
 export default async function Index() {
-	const cookieStore = cookies();
-	const supabase = createClient(cookieStore);
-
-	const {
-		data: { user },
-	} = await supabase.auth.getUser();
+	const { user, message } = await getUser();
+	if (message || !user) {
+		console.log("GetUser Message: ", message);
+	}
 
 	return (
 		<div className="flex-1 w-full flex flex-col gap-20 items-center">

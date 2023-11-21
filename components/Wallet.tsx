@@ -15,7 +15,7 @@ const Wallet = ({ email }: WalletProps) => {
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				const response = await fetch(`/api/wallet?email="rhyan@readyweb3.io"`);
+				const response = await fetch(`/api/wallet?email=${email}`);
 
 				if (!response.ok) {
 					throw new Error("Network Error");
