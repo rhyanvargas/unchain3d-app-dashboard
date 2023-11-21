@@ -37,7 +37,7 @@ export default async function Index() {
 						</p>
 						<Button variant="default">Get Started</Button>
 						{user?.email}
-						{user?.email && <Wallet email={user.email} />}
+						{user?.email && <Wallet />}
 					</div>
 				</main>
 			</div>
