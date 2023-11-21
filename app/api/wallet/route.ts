@@ -1,7 +1,6 @@
 export async function GET(request: Request) {
 	try {
-		// const email = new URL(request.url).searchParams.get("email");
-		const email = "rhyan@readyweb3.io";
+		const email = new URL(request.url).searchParams.get("email");
 
 		// Call the external API
 		const response = await fetch(`https://api.metakeep.xyz/v3/getWallet`, {

@@ -4,19 +4,19 @@ import { cookies } from "next/headers";
 import { Button } from "@/components/ui/button";
 import Wallet from "@/components/Wallet";
 import { createClient } from "@/utils/supabase/server";
-import { ReadonlyRequestCookies } from "next/dist/server/web/spec-extension/adapters/request-cookies";
+// import { ReadonlyRequestCookies } from "next/dist/server/web/spec-extension/adapters/request-cookies";
 
-async function getCookieData(): Promise<ReadonlyRequestCookies> {
-	const cookieData = cookies();
-	return new Promise((resolve) =>
-		setTimeout(() => {
-			resolve(cookieData);
-		}, 1000)
-	);
-}
+// async function getCookieData(): Promise<ReadonlyRequestCookies> {
+// 	const cookieData = cookies();
+// 	return new Promise((resolve) =>
+// 		setTimeout(() => {
+// 			resolve(cookieData);
+// 		}, 1000)
+// 	);
+// }
 
 export default async function Index() {
-	const cookieStore = await getCookieData();
+	const cookieStore = cookies();
 	const supabase = createClient(cookieStore);
 
 	const {
