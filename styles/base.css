@@ -7,7 +7,7 @@
     */
 
 		/* CSS: .bg-gradient { background: var(--gradient) } */
-		--gradient: linear-gradient(to left, #3de85d, #03f6f4, #6a54ff);
+		--gradient: linear-gradient(to right, #3de85d, #03f6f4, #6a54ff);
 
 		--background: 139 51.35% 4.64%;
 		--foreground: 139 7.9% 97.9%;
@@ -69,6 +69,15 @@
 		--ring: 240 4.9% 83.9%;
 	}
 
+	@media (prefers-color-scheme: dark) {
+		:root {
+			--background: 200 50% 3%;
+			--btn-background: 200 10% 9%;
+			--btn-background-hover: 200 10% 12%;
+			--foreground: 200 20% 96%;
+		}
+	}
+
 	* {
 		@apply border-border;
 	}
@@ -88,13 +97,13 @@
 		@apply font-normal;
 	}
 	h1 {
-		@apply text-4xl lg:text-5xl !bg-clip-text text-transparent !bg-cover !bg-center transition-all;
+		@apply text-4xl lg:text-5xl transition-all;
 	}
 	h2 {
-		@apply mt-10  border-b pb-2 text-3xl first:mt-0;
+		@apply mt-10 pb-2 text-3xl first:mt-0;
 	}
 	h3 {
-		@apply mt-8  text-2xl;
+		@apply mt-8 text-2xl;
 	}
 	p {
 		@apply font-thin leading-7 [&:not(:first-child)]:mt-6;
@@ -107,14 +116,5 @@
 	}
 	blockqoute {
 		@apply mt-6 border-l-2 pl-6 italic;
-	}
-
-	@media (prefers-color-scheme: dark) {
-		:root {
-			--background: 200 50% 3%;
-			--btn-background: 200 10% 9%;
-			--btn-background-hover: 200 10% 12%;
-			--foreground: 200 20% 96%;
-		}
 	}
 }
