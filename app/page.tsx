@@ -1,7 +1,9 @@
+
 import { createClient } from "@/utils/supabase/server";
 import { cookies } from "next/headers";
 import Wallet from "@/components/Wallet";
 import { Button } from "@/components/ui/button";
+
 
 export default async function Index() {
 	const cookieStore = cookies();
@@ -28,6 +30,7 @@ export default async function Index() {
 					{user?.email && <Wallet />}
 					<Button variant="default">Get Started</Button>
 				</div>
+
 			</div>
 
 			<footer className="w-full border-t border-t-foreground/10 p-8 flex justify-center text-center text-xs">
