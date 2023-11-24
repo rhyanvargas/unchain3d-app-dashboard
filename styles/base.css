@@ -7,6 +7,7 @@
     */
 
 		/* CSS: .bg-gradient { background: var(--gradient) } */
+		--nav-height: 65px;
 		--gradient: linear-gradient(to right, #3de85d, #03f6f4, #6a54ff);
 
 		--background: 139 51.35% 4.64%;
@@ -97,13 +98,13 @@
 		@apply font-normal;
 	}
 	h1 {
-		@apply text-4xl lg:text-5xl transition-all;
+		@apply text-4xl lg:text-5xl transition-all !leading-normal;
 	}
 	h2 {
-		@apply mt-10 pb-2 text-3xl first:mt-0;
+		@apply mt-10 pb-2 text-3xl first:mt-0 !leading-normal;
 	}
 	h3 {
-		@apply mt-8 text-2xl;
+		@apply mt-8 text-2xl !leading-normal;
 	}
 	p {
 		@apply font-thin leading-7 [&:not(:first-child)]:mt-6;

@@ -1,10 +1,9 @@
 "use client";
-
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
+import { routes } from "@/utils/constants";
 
 interface SidebarNavProps extends React.HTMLAttributes<HTMLElement> {
 	items: {
@@ -30,10 +29,10 @@ export function SidebarNav({ className, items, ...props }: SidebarNavProps) {
 					href={item.href}
 					className={cn(
 						buttonVariants({ variant: "ghost" }),
-						pathname === item.href
+						pathname === item.href || pathname.includes(routes.dashboard.home)
 							? "bg-muted hover:bg-muted"
 							: "hover:bg-transparent hover:underline",
-						"justify-start"
+						"justify-start no-underline"
 					)}
 				>
 					{item.title}

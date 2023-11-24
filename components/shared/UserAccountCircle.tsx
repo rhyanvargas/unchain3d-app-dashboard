@@ -3,10 +3,13 @@ import {
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuItem,
-	DropdownMenuLabel,
 	DropdownMenuSeparator,
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { routes } from "@/utils/constants";
+import Link from "next/link";
+import { Button } from "../ui/button";
+import AuthButton from "./AuthButton";
 
 export function UserAccountCircle() {
 	return (
@@ -18,12 +21,24 @@ export function UserAccountCircle() {
 				</Avatar>
 			</DropdownMenuTrigger>
 			<DropdownMenuContent>
-				<DropdownMenuLabel>My Account</DropdownMenuLabel>
+				<DropdownMenuItem className="p-0">
+					<Link className="w-full" href={routes.dashboard.home}>
+						<Button className="w-full pl-2 justify-start" variant={"ghost"}>
+							Dashboard
+						</Button>
+					</Link>
+				</DropdownMenuItem>
+				<DropdownMenuItem className="p-0">
+					<Link className="w-full" href={routes.account.home}>
+						<Button className="w-full pl-2 justify-start" variant={"ghost"}>
+							Settings
+						</Button>
+					</Link>
+				</DropdownMenuItem>
 				<DropdownMenuSeparator />
-				<DropdownMenuItem>Profile</DropdownMenuItem>
-				<DropdownMenuItem>Billing</DropdownMenuItem>
-				<DropdownMenuItem>Team</DropdownMenuItem>
-				<DropdownMenuItem>Subscription</DropdownMenuItem>
+				<DropdownMenuItem className="p-0">
+					<AuthButton />
+				</DropdownMenuItem>
 			</DropdownMenuContent>
 		</DropdownMenu>
 	);

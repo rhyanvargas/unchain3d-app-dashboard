@@ -30,11 +30,12 @@ export default function RootLayout({
 }: {
 	children: React.ReactNode;
 }) {
+	const mainStyles = `min-h-screen w-full pt-[var(--nav-height)]`;
 	return (
 		<html lang="en" className={`${body.variable} ${heading.variable}`}>
 			<body className="bg-background text-foreground">
 				<NavBar />
-				<main className="min-h-screen flex flex-col w-full">{children}</main>
+				<main className={mainStyles}>{children}</main>
 			</body>
 		</html>
 	);
