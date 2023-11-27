@@ -15,7 +15,7 @@ export default async function Index() {
 	return (
 		<div className="container space-y-6 h-full justify-center text-center py-24 px-24">
 			<h1 className="bg-gradient">UNCHAIN3D AI Powered Internet Experiences</h1>
-			<p className="px-36">
+			<p className="lg:px-36 px-0">
 				Immersive Real and 3D Experiences. Live Streaming Sports and
 				Entertainment. Peer 2 Peer Wagering. Gaming. Retail, Loyalty Rewards and
 				more. Earn and Ownership with Digital Privacy, World Class Security and

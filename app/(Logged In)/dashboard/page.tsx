@@ -9,10 +9,14 @@ export default async function DashboardPage() {
 		data: { user },
 	} = await supabase.auth.getUser();
 
+	const userWallet = <Wallet />;
+	const truncWallet = userWallet.toString().substring(0, 2) + "...";
+
 	return (
-		<div className="">
+		<div className="w-full">
 			<h1 className="bg-gradient">Welcome, {user?.email}</h1>
-			<h2 className="">Wallet: {user?.email && <Wallet />}</h2>
+			<h2 className="text-wrap">Wallet</h2>
+			<h3 className="text-wrap"> {user?.email && truncWallet}</h3>
 		</div>
 	);
 }
