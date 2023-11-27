@@ -1,11 +1,7 @@
 "use client";
-
-import Link from "next/link";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useFieldArray, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import * as z from "zod";
-
-import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import {
 	Form,
@@ -17,15 +13,9 @@ import {
 	FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import {
-	Select,
-	SelectContent,
-	SelectItem,
-	SelectTrigger,
-	SelectValue,
-} from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "@/components/ui/use-toast";
+import { User } from "@supabase/supabase-js";
 
 const profileFormSchema = z.object({
 	username: z
@@ -38,7 +28,7 @@ const profileFormSchema = z.object({
 		}),
 	email: z
 		.string({
-			required_error: "Please select an email to display.",
+			required_error: "Please enter a valid email.",
 		})
 		.email(),
 	bio: z.string().max(160).min(4),
@@ -62,16 +52,14 @@ const defaultValues: Partial<ProfileFormValues> = {
 	],
 };
 
-export function ProfileForm() {
+interface ProfileFormProps {
+	user: User | null;
+}
+export function ProfileForm({ user }: ProfileFormProps) {
 	const form = useForm<ProfileFormValues>({
 		resolver: zodResolver(profileFormSchema),
 		defaultValues,
 		mode: "onChange",
-	});
-
-	const { fields, append } = useFieldArray({
-		name: "urls",
-		control: form.control,
 	});
 
 	function onSubmit(data: ProfileFormValues) {
@@ -108,24 +96,20 @@ export function ProfileForm() {
 				<FormField
 					control={form.control}
 					name="email"
+					defaultValue={user?.email}
 					render={({ field }) => (
 						<FormItem>
 							<FormLabel>Email</FormLabel>
-							<Select onValueChange={field.onChange} defaultValue={field.value}>
-								<FormControl>
-									<SelectTrigger>
-										<SelectValue placeholder="Select a verified email to display" />
-									</SelectTrigger>
-								</FormControl>
-								<SelectContent>
-									<SelectItem value="m@example.com">m@example.com</SelectItem>
-									<SelectItem value="m@google.com">m@google.com</SelectItem>
-									<SelectItem value="m@support.com">m@support.com</SelectItem>
-								</SelectContent>
-							</Select>
+							<FormControl>
+								<Input
+									type="email"
+									placeholder="email@email.com"
+									{...field}
+									disabled
+								/>
+							</FormControl>
 							<FormDescription>
-								You can manage verified email addresses in your{" "}
-								<Link href="/examples/forms">email settings</Link>.
+								Please contact support to change your email.
 							</FormDescription>
 							<FormMessage />
 						</FormItem>
@@ -152,38 +136,6 @@ export function ProfileForm() {
 						</FormItem>
 					)}
 				/>
-				<div>
-					{fields.map((field, index) => (
-						<FormField
-							control={form.control}
-							key={field.id}
-							name={`urls.${index}.value`}
-							render={({ field }) => (
-								<FormItem>
-									<FormLabel className={cn(index !== 0 && "sr-only")}>
-										URLs
-									</FormLabel>
-									<FormDescription className={cn(index !== 0 && "sr-only")}>
-										Add links to your website, blog, or social media profiles.
-									</FormDescription>
-									<FormControl>
-										<Input {...field} />
-									</FormControl>
-									<FormMessage />
-								</FormItem>
-							)}
-						/>
-					))}
-					<Button
-						type="button"
-						variant="outline"
-						size="sm"
-						className="mt-2"
-						onClick={() => append({ value: "" })}
-					>
-						Add URL
-					</Button>
-				</div>
 				<Button type="submit">Update profile</Button>
 			</form>
 		</Form>

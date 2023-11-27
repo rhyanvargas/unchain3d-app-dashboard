@@ -7,6 +7,11 @@ const Wallet = () => {
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(null);
 
+	// todo: might use this in future...
+	//  const truncWallet = ethAddress
+	// 	? String(ethAddress)?.toString().substring(0, 8) + "..."
+	// 	: "";
+
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
@@ -33,10 +38,10 @@ const Wallet = () => {
 	}
 
 	if (error) {
-		return `Error: ${error}`;
+		return `Can't get wallet, please refresh page...`;
 	}
 
-	return ethAddress;
+	return <p className="truncate">{ethAddress}</p>;
 };
 
 export default Wallet;
