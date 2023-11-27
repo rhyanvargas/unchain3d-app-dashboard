@@ -1,9 +1,8 @@
 "use client";
-
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 const Wallet = () => {
-	const [data, setData] = useState(null);
+	const [, setData] = useState(null);
 	const [ethAddress, setEthAddress] = useState(null);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(null);
@@ -30,14 +29,14 @@ const Wallet = () => {
 	}, []);
 
 	if (loading) {
-		return <div>Loading...</div>;
+		return "Loading...";
 	}
 
 	if (error) {
-		return <div>Error: {error}</div>;
+		return `Error: ${error}`;
 	}
 
-	return <div>Wallet Address: {ethAddress}</div>;
+	return ethAddress;
 };
 
 export default Wallet;

@@ -4,4 +4,10 @@
 	.bg-gradient {
 		background: var(--gradient);
 	}
+	h1.bg-gradient {
+		@apply !bg-clip-text text-transparent !bg-cover !bg-center;
+	}
+	.container {
+		@apply w-full mx-auto px-4 lg:px-6 lg:max-w-7xl;
+	}
 }

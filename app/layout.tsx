@@ -1,3 +1,4 @@
+import NavBar from "@/components/shared/NavBar";
 import "./globals.css";
 import { Space_Grotesk, Archivo } from "next/font/google";
 
@@ -13,7 +14,6 @@ const body = Archivo({
 	variable: "--font-body",
 	style: ["normal"],
 });
-
 const defaultUrl = process.env.VERCEL_URL
 	? `https://${process.env.VERCEL_URL}`
 	: "http://localhost:3000";
@@ -30,12 +30,12 @@ export default function RootLayout({
 }: {
 	children: React.ReactNode;
 }) {
+	const mainStyles = `min-h-screen w-full pt-[var(--nav-height)]`;
 	return (
 		<html lang="en" className={`${body.variable} ${heading.variable}`}>
 			<body className="bg-background text-foreground">
-				<main className="min-h-screen flex flex-col items-center">
-					{children}
-				</main>
+				<NavBar />
+				<main className={mainStyles}>{children}</main>
 			</body>
 		</html>
 	);
