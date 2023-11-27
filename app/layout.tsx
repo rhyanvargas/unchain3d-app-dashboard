@@ -1,6 +1,7 @@
 import NavBar from "@/components/shared/NavBar";
 import "./globals.css";
 import { Space_Grotesk, Archivo } from "next/font/google";
+import { Toaster } from "@/components/ui/toaster";
 
 // If loading a variable font, you don't need to specify the font weight
 const heading = Space_Grotesk({
@@ -36,6 +37,7 @@ export default function RootLayout({
 			<body className="bg-background text-foreground">
 				<NavBar />
 				<main className={mainStyles}>{children}</main>
+				<Toaster />
 			</body>
 		</html>
 	);
