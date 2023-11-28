@@ -69,9 +69,7 @@ export function ProfileForm({ user }: ProfileFormProps) {
 					control={form.control}
 					name="username"
 					defaultValue={
-						user
-							? user?.email?.split("@", 2)[0].slice(0, 2).toUpperCase()
-							: "username89"
+						user ? user?.email?.split("@", 2)[0].toLowerCase() : "username89"
 					}
 					render={({ field }) => (
 						<FormItem>
