@@ -32,13 +32,6 @@ const profileFormSchema = z.object({
 		})
 		.email(),
 	bio: z.string().max(160).min(4),
-	urls: z
-		.array(
-			z.object({
-				value: z.string().url({ message: "Please enter a valid URL." }),
-			})
-		)
-		.optional(),
 });
 
 type ProfileFormValues = z.infer<typeof profileFormSchema>;
@@ -46,10 +39,6 @@ type ProfileFormValues = z.infer<typeof profileFormSchema>;
 // This can come from your database or API.
 const defaultValues: Partial<ProfileFormValues> = {
 	bio: "I own a computer.",
-	urls: [
-		{ value: "https://shadcn.com" },
-		{ value: "http://twitter.com/shadcn" },
-	],
 };
 
 interface ProfileFormProps {
@@ -79,6 +68,7 @@ export function ProfileForm({ user }: ProfileFormProps) {
 				<FormField
 					control={form.control}
 					name="username"
+					defaultValue="rhyGuy89"
 					render={({ field }) => (
 						<FormItem>
 							<FormLabel>Username</FormLabel>

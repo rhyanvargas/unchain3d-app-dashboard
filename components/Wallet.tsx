@@ -41,7 +41,7 @@ const Wallet = () => {
 		return `Can't get wallet, please refresh page...`;
 	}
 
-	return <p className="truncate">{ethAddress}</p>;
+	return <p className="truncate hover:trun">{ethAddress}</p>;
 };
 
 export default Wallet;
