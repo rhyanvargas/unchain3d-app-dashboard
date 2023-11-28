@@ -32,7 +32,7 @@ const NavBar: React.FC = async () => {
 							</div>
 						)}
 
-						<UserAccountCircle />
+						<UserAccountCircle user={user} />
 					</div>
 				)}
 			</div>

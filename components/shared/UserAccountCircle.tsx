@@ -10,14 +10,20 @@ import { routes } from "@/utils/constants";
 import Link from "next/link";
 import { Button } from "../ui/button";
 import AuthButton from "./AuthButton";
+import { User } from "@supabase/supabase-js";
 
-export function UserAccountCircle() {
+interface UserAccountCircleProps {
+	user: User;
+}
+export function UserAccountCircle({ user }: UserAccountCircleProps) {
 	return (
 		<DropdownMenu>
 			<DropdownMenuTrigger>
 				<Avatar>
-					<AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-					<AvatarFallback>CN</AvatarFallback>
+					{/* TODO: Use this to prompt profile image <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" /> */}
+					<AvatarFallback>
+						{user && user?.email?.split("@", 2)[0].slice(0, 2).toUpperCase()}
+					</AvatarFallback>
 				</Avatar>
 			</DropdownMenuTrigger>
 			<DropdownMenuContent>
