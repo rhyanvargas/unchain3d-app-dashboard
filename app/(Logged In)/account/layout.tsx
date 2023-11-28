@@ -25,7 +25,6 @@ export default function SettingsLayout({ children }: SettingsLayoutProps) {
 				</aside>
 				<div className="flex-1 lg:max-w-2xl space-y-6">{children}</div>
 			</div>
-			{/* </div> */}
 		</>
 	);
 }

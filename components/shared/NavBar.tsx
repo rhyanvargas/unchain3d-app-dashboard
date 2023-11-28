@@ -4,6 +4,7 @@ import Logo from "../ui/Logo";
 import { cookies } from "next/headers";
 import { createClient } from "@/utils/supabase/server";
 import { navBarHeight } from "@/utils/constants";
+import Wallet from "../Wallet";
 
 const NavBar: React.FC = async () => {
 	const cookieStore = cookies();
@@ -25,6 +26,12 @@ const NavBar: React.FC = async () => {
 				<Logo />
 				{user && (
 					<div className="container flex justify-end items-center">
+						{user && (
+							<div className="max-w-[105px] mr-6 overflow-x-hidden hover:max-w-none">
+								<Wallet />
+							</div>
+						)}
+
 						<UserAccountCircle />
 					</div>
 				)}

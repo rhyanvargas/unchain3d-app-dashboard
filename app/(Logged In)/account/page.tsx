@@ -1,18 +1,23 @@
+import { ProfileForm } from "@/app/profile/profile-form";
 import { Separator } from "@/components/ui/separator";
+import { createClient } from "@/utils/supabase/server";
+import { cookies } from "next/headers";
 
-export default function SettingsProfilePage() {
+export default async function SettingsProfilePage() {
+	const cookieStore = cookies();
+	const supabase = createClient(cookieStore);
+	const {
+		data: { user },
+	} = await supabase.auth.getUser();
+
 	return (
-		<div className="">
+		<div className="space-y-6">
 			<div>
-				<h2>Avatar</h2>
-				<p className="text-sm text-muted-foreground">
-					Avatar This is your avatar. Click on the avatar to upload a custom one
-					from your files.
-				</p>
+				<h2>Profile</h2>
 			</div>
-			<Separator />
-			<div>
-				<h2>FORM GOES HERE</h2>
+
+			<div className="">
+				<ProfileForm user={user} />
 			</div>
 		</div>
 	);

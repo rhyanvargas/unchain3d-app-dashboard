@@ -10,9 +10,6 @@ export default function SettingsProfilePage() {
 				</p>
 			</div>
 			<Separator />
-			<div>
-				<h2>FORM GOES HERE</h2>
-			</div>
 		</div>
 	);
 }

@@ -1,6 +1,6 @@
 import { createClient } from "@/utils/supabase/server";
 import { cookies } from "next/headers";
-import Wallet from "@/components/Wallet";
+
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
@@ -22,9 +22,15 @@ export default async function Index() {
 				NO GAS FEES!
 			</p>
 			<div>
-				<Link href="/login">
-					<Button variant="default">Get Started</Button>
-				</Link>
+				{!user ? (
+					<Link href="/login">
+						<Button variant="default">Get Started</Button>
+					</Link>
+				) : (
+					<Link href="/dashboard">
+						<Button variant="default">Go to Dashboard</Button>
+					</Link>
+				)}
 			</div>
 		</div>
 	);
